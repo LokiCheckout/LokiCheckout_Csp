@@ -1,0 +1,9 @@
+{
+    "modules": [
+        "Magento_Store",
+        "Yireo_LokiCheckout",
+        "Yireo_CspUtilities"
+    ],
+    "components": [],
+    "config": []
+}
