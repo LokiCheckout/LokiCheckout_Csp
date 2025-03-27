@@ -2,6 +2,7 @@
     "name": "yireo/magento2-loki-checkout-csp",
     "version": "1.0.1",
     "description": "N/A",
+    "keywords": ["loki-core"],
     "type": "magento2-module",
     "require": {
         "magento/framework": "^103.0",
