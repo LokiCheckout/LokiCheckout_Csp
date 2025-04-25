@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] - 25 April 2025
+### Fixed
+- Allow upgrading to LokiFieldComponents and LokiCheckout 1.0
+- Update Alpine CSP built
+
 ## [1.0.2] - 08 April 2025
 ### Fixed
 - Housekeeping
