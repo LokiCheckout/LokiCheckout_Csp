@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.4] - 28 April 2025
+### Fixed
+- Properly add CSP to Luma-themes
+
 ## [1.0.3] - 25 April 2025
 ### Fixed
 - Allow upgrading to LokiFieldComponents and LokiCheckout 1.0
