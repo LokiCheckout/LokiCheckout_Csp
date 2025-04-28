@@ -4,6 +4,7 @@
         <sequence>
             <module name="Magento_Store"/>
             <module name="Yireo_LokiCheckout"/>
+            <module name="Yireo_LokiComponents"/>
             <module name="Yireo_CspUtilities" />
         </sequence>
     </module>
