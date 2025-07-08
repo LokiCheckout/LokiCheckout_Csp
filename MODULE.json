@@ -2,7 +2,6 @@
     "modules": [
         "Magento_Store",
         "Yireo_LokiCheckout",
-        "Yireo_LokiComponents",
         "Yireo_CspUtilities"
     ],
     "components": [],
