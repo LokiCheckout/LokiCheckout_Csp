@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.5] - 08 July 2025
+### Fixed
+- Generate new MODULE.json with simple test count
+- Allow PHP 8.4 in CI
+
 ## [1.0.4] - 28 April 2025
 ### Fixed
 - Properly add CSP to Luma-themes
