@@ -1,0 +1,6 @@
+{
+  "ignore": [
+    "Yireo_LokiCheckout",
+    "yireo/magento2-loki-checkout"
+  ]
+}
