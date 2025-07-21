@@ -1,7 +1,7 @@
 {
     "modules": [
         "Magento_Store",
-        "Yireo_LokiCheckout",
+        "LokiCheckout_Core",
         "Yireo_CspUtilities"
     ],
     "components": [],

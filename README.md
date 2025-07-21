@@ -1,16 +1,16 @@
-# Yireo_LokiCheckoutCsp
+# LokiCheckout_Csp
 
 **This is an add-on package for enforcing the CSP Restrictive Mode in the checkout, including the Alpine CSP Build and removing the `unsafe-inline` and `unsafe-eval` policies. This is required to be fully compliant with PCI DSS v4.**
 
 ## Installation
 Install this package via composer (assuming you have setup the `composer.yireo.com` repository correctly already):
 ```bash
-composer require yireo/magento2-loki-checkout-csp
+composer require loki-checkout/magento2-csp
 ```
 
 Next, enable this module:
 ```bash
-bin/magento module:enable Yireo_LokiCheckoutCsp
+bin/magento module:enable LokiCheckout_Csp
 ```
 
 ## Usage notes
