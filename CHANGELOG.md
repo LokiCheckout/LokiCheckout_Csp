@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 07 August 2025
+### Fixed
+- Lower PHP requirement to PHP 8.2+
+
 ## [2.0.0] - 22 July 2025
 ### Fixed
 - Bump `LokiCheckout_Core` to 2.0.0
