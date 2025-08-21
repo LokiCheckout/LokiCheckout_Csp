@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.3] - 21 August 2025
+### Fixed
+- Add `defer` back to Alpine CSP loadig
+- Fix newlines after comments
+- Add escaping of template code
+- Remove defer from Alpine to load things faster
+
 ## [2.0.2] - 19 August 2025
 ### Fixed
 - Lower requirements to PHP 8.1
