@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.4] - 26 August 2025
+### Fixed
+- Rename Alpine CSP template
+- Load Alpine Mask under Luma properly
+- Add GitLab CI files
+
 ## [2.0.3] - 21 August 2025
 ### Fixed
 - Add `defer` back to Alpine CSP loadig
