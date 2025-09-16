@@ -1,8 +1,34 @@
 {
-    "modules": [
-        "Magento_Store",
+    "sequence": [
         "LokiCheckout_Core",
+        "Magento_Store",
         "Yireo_CspUtilities"
+    ],
+    "modules": [
+        "LokiCheckout_Core",
+        "Loki_Base",
+        "Loki_Components",
+        "Loki_CssUtils",
+        "Loki_FieldComponents",
+        "Loki_MapComponents",
+        "Magento_Backend",
+        "Magento_Catalog",
+        "Magento_Checkout",
+        "Magento_CheckoutAgreements",
+        "Magento_Config",
+        "Magento_Csp",
+        "Magento_Customer",
+        "Magento_Directory",
+        "Magento_Eav",
+        "Magento_Newsletter",
+        "Magento_Payment",
+        "Magento_Quote",
+        "Magento_Sales",
+        "Magento_Shipping",
+        "Magento_Store",
+        "Magento_Vault",
+        "Yireo_CspUtilities",
+        "Yireo_HyvaThemeAutoRegistration"
     ],
     "components": [],
     "config": [],
