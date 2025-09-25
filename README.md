@@ -1,9 +1,11 @@
 # LokiCheckout_Csp
 
-**This is an add-on package for enforcing the CSP Restrictive Mode in the checkout, including the Alpine CSP Build and removing the `unsafe-inline` and `unsafe-eval` policies. This is required to be fully compliant with PCI DSS v4.**
+**This Magento 2 module is an add-on package for enforcing the CSP Restrictive Mode in the checkout, including the Alpine CSP Build and removing the `unsafe-inline` and `unsafe-eval` policies. This is required to be fully compliant with PCI DSS v4.**
+
+*Note that we develop our core with this module enabled at all times, which ensures that the Loki Checkout is CSP compliant at all times.*
 
 ## Installation
-Install this package via composer (assuming you have setup the `composer.yireo.com` repository correctly already):
+Install this package via composer:
 ```bash
 composer require loki-checkout/magento2-csp
 ```
