@@ -10,4 +10,4 @@ use Magento\Framework\View\Element\Template;
 /** @var Escaper $escaper */
 ?>
 <?= /* @noEscape */ $block->getChildHtml() ?>
-<script src="<?= /* @noEscape */ $escaper->escapeUrl($block->getViewFileUrl("LokiCheckout_Csp::js/alpine-csp.min.js")) ?>" defer crossorigin></script>
+<script src="<?= $escaper->escapeUrl($block->getViewFileUrl("LokiCheckout_Csp::js/alpine-csp.min.js")) ?>" defer crossorigin></script>
