@@ -3,11 +3,15 @@ declare(strict_types=1);
 
 /** @version 2.0.7 */
 
+use Loki\Components\Util\Block\ChildRenderer;
 use Magento\Framework\Escaper;
 use Magento\Framework\View\Element\Template;
 
 /** @var Template $block */
 /** @var Escaper $escaper */
+/** @var Escaper $escaper */
+/** @var ChildRenderer $childRenderer */
+
 ?>
-<?= /* @noEscape */ $block->getChildHtml() ?>
+<?= /* @noEscape */ $childRenderer->all($block) ?>
 <script src="<?= $escaper->escapeUrl($block->getViewFileUrl("LokiCheckout_Csp::js/alpine-csp.min.js")) ?>" defer crossorigin></script>
