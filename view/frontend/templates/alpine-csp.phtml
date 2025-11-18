@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 /** @version 2.0.7 */
 
+use Loki\Base\ViewModel\ModuleConfig;
+use Loki\Components\Factory\ViewModelFactory;
 use Loki\Components\Util\Block\ChildRenderer;
 use Magento\Framework\Escaper;
 use Magento\Framework\View\Element\Template;
@@ -11,7 +13,13 @@ use Magento\Framework\View\Element\Template;
 /** @var Escaper $escaper */
 /** @var Escaper $escaper */
 /** @var ChildRenderer $childRenderer */
+/** @var ViewModelFactory $viewModelFactory */
+/** @var ModuleConfig $moduleConfig */
 
+$moduleConfig = $viewModelFactory->create(ModuleConfig::class);
+if ($moduleConfig->isEnabled('MageOS_AlpineLoader')) {
+    return;
+}
 ?>
 <?= /* @noEscape */ $childRenderer->all($block) ?>
 <script src="<?= $escaper->escapeUrl($block->getViewFileUrl("LokiCheckout_Csp::js/alpine-csp.min.js")) ?>" defer crossorigin></script>
