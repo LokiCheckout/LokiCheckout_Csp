@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.8] - 21 November 2025
+### Fixed
+- Allow compatibility with MageOS_AlpineLoader
+- Replace $block->getChildHtml() with $childRenderer->all() including better sorting
+
 ## [2.0.7] - 14 November 2025
 ### Fixed
 - Upgrade Alpine CSP to 3.15.1
