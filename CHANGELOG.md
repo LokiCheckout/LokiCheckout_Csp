@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.9] - 02 December 2025
+### Fixed
+- Enable CSP on-the-fly to allow for disabling under Luma Checkout
+
 ## [2.0.8] - 21 November 2025
 ### Fixed
 - Allow compatibility with MageOS_AlpineLoader
