@@ -16,10 +16,10 @@ use Magento\Framework\View\Element\Template;
 /** @var ViewModelFactory $viewModelFactory */
 /** @var ModuleConfig $moduleConfig */
 
-$moduleConfig = $viewModelFactory->create(ModuleConfig::class);
-if ($moduleConfig->isEnabled('MageOS_AlpineLoader')) {
+if ($block->getLayout()->getBlock('alpine-js.loader')) {
     return;
 }
+
 ?>
 <?= /* @noEscape */ $childRenderer->all($block) ?>
 <script src="<?= $escaper->escapeUrl($block->getViewFileUrl("LokiCheckout_Csp::js/alpine-csp.min.js")) ?>" defer crossorigin></script>
