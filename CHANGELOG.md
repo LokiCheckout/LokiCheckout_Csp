@@ -6,14 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.10] - 12 January 2026
+### Fixed
+- Check for AlpineJS loader block instead of module being enabled
+- Copy generic CI/CD files
+
 ## [2.0.9] - 02 December 2025
 ### Fixed
 - Enable CSP on-the-fly to allow for disabling under Luma Checkout
 
 ## [2.0.8] - 21 November 2025
 ### Fixed
-- Allow compatibility with MageOS_AlpineLoader
-- Replace $block->getChildHtml() with $childRenderer->all() including better sorting
+- Allow compatibility with `MageOS_AlpineLoader`
+- Replace `$block->getChildHtml()` with `$childRenderer->all()` including better sorting
 
 ## [2.0.7] - 14 November 2025
 ### Fixed
