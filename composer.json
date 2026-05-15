@@ -1,7 +1,7 @@
 {
     "name": "loki-checkout/magento2-csp",
     "version": "2.0.10",
-    "description": "N/A",
+    "description": "Provides highly recommended CSP, thus PCI DSS 4 compliance",
     "keywords": [
         "loki-checkout",
         "loki-checkout-category-core"
