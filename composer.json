@@ -20,5 +20,8 @@
         "psr-4": {
             "LokiCheckout\\Csp\\": ""
         }
+    },
+    "extra": {
+        "label": "CSP Support"
     }
 }
