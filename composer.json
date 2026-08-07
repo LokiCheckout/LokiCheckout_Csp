@@ -8,9 +8,9 @@
     ],
     "type": "magento2-module",
     "require": {
+        "loki-checkout/magento2-core": "^2.0",
         "loki/magento2-base": "^1.2",
         "loki/magento2-components": "^2.7",
-        "loki-checkout/magento2-core": "^2.0",
         "magento/framework": "^103.0",
         "yireo/magento2-csp-utilities": "^1.0"
     },
