@@ -2,6 +2,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
     <module name="LokiCheckout_Csp">
         <sequence>
+            <module name="Loki_Base"/>
+            <module name="Loki_Components"/>
             <module name="LokiCheckout_Core"/>
             <module name="Magento_Store"/>
             <module name="Yireo_CspUtilities"/>
