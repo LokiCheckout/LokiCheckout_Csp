@@ -24,6 +24,7 @@
         "Magento_Payment",
         "Magento_Quote",
         "Magento_Sales",
+        "Magento_SalesRule",
         "Magento_Shipping",
         "Magento_Store",
         "Magento_Tax",
