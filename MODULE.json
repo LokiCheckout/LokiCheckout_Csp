@@ -1,6 +1,8 @@
 {
     "sequence": [
         "LokiCheckout_Core",
+        "Loki_Base",
+        "Loki_Components",
         "Magento_Store",
         "Yireo_CspUtilities"
     ],
