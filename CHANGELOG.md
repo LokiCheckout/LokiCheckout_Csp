@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.11] - 07 August 2026
+### Fixed
+- Drop custom Alpine CSP with Hyva CSP-theme
+- Upgrade Alpine to 3.15.12
+
 ## [2.0.10] - 12 January 2026
 ### Fixed
 - Check for AlpineJS loader block instead of module being enabled
