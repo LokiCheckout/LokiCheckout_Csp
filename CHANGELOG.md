@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.12] - 11 August 2026
+### Fixed
+- Re-enable original Alpine CSP build for Hyva Themes
+
 ## [2.0.11] - 07 August 2026
 ### Fixed
 - Drop custom Alpine CSP with Hyva CSP-theme
