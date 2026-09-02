@@ -39,7 +39,6 @@
     "module_name": "LokiCheckout_Csp",
     "composer_name": "loki-checkout/magento2-csp",
     "php_versions": [
-        "8.1",
         "8.2",
         "8.3",
         "8.4",

@@ -12,7 +12,8 @@
         "loki/magento2-base": "^1.2",
         "loki/magento2-components": "^2.7",
         "magento/framework": "^103.0",
-        "yireo/magento2-csp-utilities": "^1.0"
+        "yireo/magento2-csp-utilities": "^1.0",
+        "php": ">=8.2 <8.6"
     },
     "license": "OSL-3.0",
     "autoload": {
