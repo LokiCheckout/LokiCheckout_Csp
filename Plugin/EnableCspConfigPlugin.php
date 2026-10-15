@@ -7,6 +7,14 @@ use Magento\Framework\App\ScopeInterface;
 
 class EnableCspConfigPlugin
 {
+    private const MODE_PATH = 'csp/mode/storefront_checkout_index_index';
+    private const POLICIES_PATH = 'csp/policies/storefront_checkout_index_index';
+
+    /**
+     * @var bool[]
+     */
+    private array $isEnabled = [];
+
     /**
      * @param ScopeConfigInterface           $subject
      * @param mixed                          $result
@@ -23,36 +31,32 @@ class EnableCspConfigPlugin
         $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
         $scopeCode = null
     ) {
-        if (false === str_starts_with($path, 'csp/')) {
+        if (false === is_string($path) || false === str_starts_with($path, 'csp/')) {
             return $result;
         }
 
-        static $isEnabled = null;
-        if (false === is_bool($isEnabled)) {
-            $isEnabled = $this->isEnabled($subject, $scopeType, $scopeCode);
-        }
-
-        if (false === $isEnabled) {
+        if (false === in_array($path, [self::MODE_PATH, self::MODE_PATH . '/report_only', self::POLICIES_PATH])) {
             return $result;
         }
 
-        if ($path == 'csp/mode/storefront_checkout_index_index') {
-            return [
-                'report_only' => 0,
-            ];
+        if (false === $this->isEnabled($subject, $scopeType, $scopeCode)) {
+            return $result;
         }
 
-        if ($path == 'csp/policies/storefront_checkout_index_index') {
-            $cspPolicy = $this->getCspPolicy();
-            if (false === is_array($result)) {
-                return $cspPolicy;
-            }
-
-            return array_merge($result, $cspPolicy);
+        if ($path === self::MODE_PATH . '/report_only') {
+            return 0;
         }
 
+        if ($path === self::MODE_PATH) {
+            return array_replace(is_array($result) ? $result : [], ['report_only' => 0]);
+        }
 
-        return $result;
+        $cspPolicy = $this->getCspPolicy();
+        if (false === is_array($result)) {
+            return $cspPolicy;
+        }
+
+        return array_replace_recursive($result, $cspPolicy);
     }
 
     private function isEnabled(
@@ -60,7 +64,27 @@ class EnableCspConfigPlugin
         $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
         $scopeCode = null
     ): bool {
-        return (bool)$scopeConfig->getValue('loki_checkout/general/enable', $scopeType, $scopeCode);
+        $cacheKey = $this->getScopeCacheKey($scopeType, $scopeCode);
+        if (false === isset($this->isEnabled[$cacheKey])) {
+            $this->isEnabled[$cacheKey] = (bool)$scopeConfig->getValue(
+                'loki_checkout/general/enable',
+                $scopeType,
+                $scopeCode
+            );
+        }
+
+        return $this->isEnabled[$cacheKey];
+    }
+
+    private function getScopeCacheKey($scopeType, $scopeCode): string
+    {
+        if (is_object($scopeCode)) {
+            $scopeCode = method_exists($scopeCode, 'getCode')
+                ? $scopeCode->getCode()
+                : spl_object_hash($scopeCode);
+        }
+
+        return (string)$scopeType . '|' . (is_scalar($scopeCode) ? (string)$scopeCode : '');
     }
 
     private function getCspPolicy(): array
