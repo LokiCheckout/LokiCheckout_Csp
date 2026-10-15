@@ -5,6 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Security
+- Stop adding CSP nonces to the `messages` block, which could allow injected scripts to run
+- Only add CSP nonces on the checkout page when Loki Checkout is enabled
+- Fix config path used to force CSP restrictive mode in the checkout
+- Resolve Loki Checkout enabled flag per scope instead of once per process
+- Merge checkout script policy recursively so checkout-specific hosts are kept
+
+### Added
+- Unit tests for both plugins
 
 ## [2.0.12] - 11 August 2026
 ### Fixed
