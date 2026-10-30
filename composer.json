@@ -12,8 +12,8 @@
         "loki/magento2-base": "^1.2",
         "loki/magento2-components": "^2.7",
         "magento/framework": "^103.0",
-        "yireo/magento2-csp-utilities": "^1.0",
-        "php": ">=8.2 <8.6"
+        "php": ">=8.2 <8.6",
+        "yireo/magento2-csp-utilities": "^1.0"
     },
     "license": "OSL-3.0",
     "autoload": {
@@ -23,8 +23,5 @@
         "psr-4": {
             "LokiCheckout\\Csp\\": ""
         }
-    },
-    "extra": {
-        "label": "CSP Support"
     }
 }
