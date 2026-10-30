@@ -81,7 +81,7 @@ class EnableCspConfigPlugin
         if (is_object($scopeCode)) {
             $scopeCode = method_exists($scopeCode, 'getCode')
                 ? $scopeCode->getCode()
-                : spl_object_hash($scopeCode);
+                : (string)spl_object_id($scopeCode);
         }
 
         return (string)$scopeType . '|' . (is_scalar($scopeCode) ? (string)$scopeCode : '');
