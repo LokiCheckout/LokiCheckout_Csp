@@ -1,10 +1,14 @@
 # LokiCheckout_Csp
 
 <!-- badges.specs.start -->
+<div class="gitlab-specs-badges">
+
 ![Magento version](https://img.shields.io/badge/Magento-2.4.6%20%7C%202.4.9-orange)
 ![PHP version](https://img.shields.io/badge/PHP-8.2%E2%80%938.5-777BB4)
 ![License](https://img.shields.io/badge/License-OSL--3.0-blue)
 ![Latest Version](https://gitlab.yireo.com/loki-checkout/LokiCheckout_Csp/-/badges/release.svg)
+
+</div>
 <!-- badges.specs.end -->
 
 
@@ -30,9 +34,10 @@ Note that this module only covers CSP rules for the LokiCheckout extensions. You
 ## Current status
 
 <!-- badges.test.start -->
-[![Static Tests](https://gitlab.yireo.com/loki-checkout/LokiCheckout_Csp/badges/main/pipeline.svg?job=static-tests)](https://gitlab.yireo.com/loki-checkout/LokiCheckout_Csp/-/pipelines)
-[![Unit Tests](https://gitlab.yireo.com/loki-checkout/LokiCheckout_Csp/badges/main/pipeline.svg?job=unit-tests)](https://gitlab.yireo.com/loki-checkout/LokiCheckout_Csp/-/pipelines)
-[![Integration Tests](https://gitlab.yireo.com/loki-checkout/LokiCheckout_Csp/badges/main/pipeline.svg?job=integration-tests)](https://gitlab.yireo.com/loki-checkout/LokiCheckout_Csp/-/pipelines)
-[![Playwright](https://gitlab.yireo.com/loki-checkout/LokiCheckout_Csp/badges/main/pipeline.svg?job=playwright)](https://gitlab.yireo.com/loki-checkout/LokiCheckout_Csp/-/pipelines)
-[![DI Compilation](https://gitlab.yireo.com/loki-checkout/LokiCheckout_Csp/badges/main/pipeline.svg?job=compile)](https://gitlab.yireo.com/loki-checkout/LokiCheckout_Csp/-/pipelines)
+<div class="gitlab-pipeline-badges">
+
+[![GitLab CI Pipelines](https://gitlab.yireo.com/loki-checkout/LokiCheckout_Csp/badges/main/pipeline.svg?style=flat-square
+)](https://gitlab.yireo.com/loki-checkout/LokiCheckout_Csp/-/pipelines)
+
+</div>
 <!-- badges.test.end -->
