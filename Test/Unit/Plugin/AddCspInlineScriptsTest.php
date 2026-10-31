@@ -37,6 +37,12 @@ class AddCspInlineScriptsTest extends TestCase
         $this->assertSame(self::HTML, $plugin->afterToHtml($this->getBlock('head.js'), self::HTML));
     }
 
+    public function testReturnsStringForNullHtmlOfOtherBlocks(): void
+    {
+        $plugin = $this->getPlugin('checkout_index_index', true, false);
+        $this->assertSame('', $plugin->afterToHtml($this->getBlock('messages'), null));
+    }
+
     private function getPlugin(string $fullActionName, bool $enabled, bool $expectReplace): AddCspInlineScripts
     {
         $replaceInlineScripts = $this->createMock(ReplaceInlineScripts::class);
