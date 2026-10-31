@@ -3,17 +3,24 @@
 namespace LokiCheckout\Csp\Plugin;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\App\ScopeInterface;
 
 class EnableCspConfigPlugin
 {
+    private const CHECKOUT_ACTION = 'checkout_index_index';
     private const MODE_PATH = 'csp/mode/storefront_checkout_index_index';
     private const POLICIES_PATH = 'csp/policies/storefront_checkout_index_index';
+    private const GLOBAL_REPORT_ONLY_PATH = 'csp/mode/storefront/report_only';
+    private const GLOBAL_POLICIES_PATH = 'csp/policies/storefront';
 
-    /**
-     * @var bool[]
-     */
-    private array $isEnabled = [];
+    private readonly HttpRequest $request;
+
+    public function __construct(
+        HttpRequest $request
+    ) {
+        $this->request = $request;
+    }
 
     /**
      * @param ScopeConfigInterface           $subject
@@ -35,15 +42,15 @@ class EnableCspConfigPlugin
             return $result;
         }
 
-        if (false === in_array($path, [self::MODE_PATH, self::MODE_PATH . '/report_only', self::POLICIES_PATH])) {
+        if (false === $this->isApplicablePath($path)) {
             return $result;
         }
 
-        if (false === $this->isEnabled($subject, $scopeType, $scopeCode)) {
+        if (false === (bool)$subject->getValue('loki_checkout/general/enable', $scopeType, $scopeCode)) {
             return $result;
         }
 
-        if ($path === self::MODE_PATH . '/report_only') {
+        if ($path === self::MODE_PATH . '/report_only' || $path === self::GLOBAL_REPORT_ONLY_PATH) {
             return 0;
         }
 
@@ -59,38 +66,24 @@ class EnableCspConfigPlugin
         return array_replace_recursive($result, $cspPolicy);
     }
 
-    private function isEnabled(
-        ScopeConfigInterface $scopeConfig,
-        $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
-        $scopeCode = null
-    ): bool {
-        $cacheKey = $this->getScopeCacheKey($scopeType, $scopeCode);
-        if (false === isset($this->isEnabled[$cacheKey])) {
-            $this->isEnabled[$cacheKey] = (bool)$scopeConfig->getValue(
-                'loki_checkout/general/enable',
-                $scopeType,
-                $scopeCode
-            );
-        }
-
-        return $this->isEnabled[$cacheKey];
-    }
-
-    private function getScopeCacheKey($scopeType, $scopeCode): string
+    private function isApplicablePath(string $path): bool
     {
-        if (is_object($scopeCode)) {
-            $scopeCode = method_exists($scopeCode, 'getCode')
-                ? $scopeCode->getCode()
-                : (string)spl_object_id($scopeCode);
+        if (in_array($path, [self::MODE_PATH, self::MODE_PATH . '/report_only', self::POLICIES_PATH], true)) {
+            return true;
         }
 
-        return (string)$scopeType . '|' . (is_scalar($scopeCode) ? (string)$scopeCode : '');
+        if (false === in_array($path, [self::GLOBAL_REPORT_ONLY_PATH, self::GLOBAL_POLICIES_PATH], true)) {
+            return false;
+        }
+
+        return $this->request->getFullActionName() === self::CHECKOUT_ACTION;
     }
 
     private function getCspPolicy(): array
     {
         return [
             'scripts' => [
+                'policy_id' => 'script-src',
                 'inline' => 0,
                 'event_handlers' => 1,
                 'eval' => 0,

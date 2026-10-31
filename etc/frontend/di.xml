@@ -12,4 +12,10 @@
             name="LokiCheckout_Csp::enableCspConfig"
             type="LokiCheckout\Csp\Plugin\EnableCspConfigPlugin"/>
     </type>
+
+    <type name="LokiCheckout\Csp\Plugin\EnableCspConfigPlugin">
+        <arguments>
+            <argument name="request" xsi:type="object">Magento\Framework\App\Request\Http\Proxy</argument>
+        </arguments>
+    </type>
 </config>
