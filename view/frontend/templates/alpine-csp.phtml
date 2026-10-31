@@ -11,7 +11,6 @@ use Magento\Framework\View\Element\Template;
 
 /** @var Template $block */
 /** @var Escaper $escaper */
-/** @var Escaper $escaper */
 /** @var ChildRenderer $childRenderer */
 /** @var ViewModelFactory $viewModelFactory */
 /** @var ModuleConfig $moduleConfig */
@@ -22,4 +21,4 @@ if ($block->getLayout()->getBlock('alpine-js.loader')) {
 
 ?>
 <?= /* @noEscape */ $childRenderer->all($block) ?>
-<script src="<?= $escaper->escapeUrl($block->getViewFileUrl("LokiCheckout_Csp::js/alpine-csp.min.js")) ?>" defer crossorigin></script>
+<script src="<?= $escaper->escapeUrl($block->getViewFileUrl("LokiCheckout_Csp::js/alpine-csp.min.js")) ?>" defer></script>
