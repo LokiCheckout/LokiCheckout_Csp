@@ -3,6 +3,7 @@
         "LokiCheckout_Core",
         "Loki_Base",
         "Loki_Components",
+        "Magento_Csp",
         "Magento_Store",
         "Yireo_CspUtilities"
     ],
