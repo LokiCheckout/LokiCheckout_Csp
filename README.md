@@ -30,6 +30,14 @@ bin/magento module:enable LokiCheckout_Csp
 ## Usage notes
 Note that this module only covers CSP rules for the LokiCheckout extensions. Your theme still requires work as well to work together with the no-`unsafe-inline` and no-`unsafe-eval` policies.
 
+When the Loki Checkout is enabled, this module enforces the CSP (no report-only mode) on the checkout page and removes `unsafe-inline` and `unsafe-eval` from `script-src`. This applies to every theme. Because of this, the following is required:
+
+- **Hyvä**: Use the CSP theme `Hyva/default-csp` (or a child theme of it). The regular `Hyva/default` theme loads an Alpine.js build that requires `unsafe-eval` and stops working in the checkout.
+- **Luma**: This module replaces Alpine.js with the Alpine CSP build in Luma-based themes (themes inheriting from `Magento/blank`). However, the Luma header still contains Knockout UI components (like the customer greeting), which Knockout and `mage/utils/template.js` parse with `eval`. These widgets break in the checkout, with errors like `EvalError: Unable to parse bindings`. Remove them from the checkout layout of your theme.
+- **Other themes** (Breeze, themes not inheriting from `Magento/blank`) and **MageOS_AlpineLoader**: The Alpine CSP build of this module is not loaded there, so make sure that your theme loads an Alpine CSP build itself.
+
+Magento 2.4.6 does not support CSP settings per page. With 2.4.6, this module therefore overrides the global storefront CSP settings, but only for the checkout page.
+
 
 ## Current status
 
