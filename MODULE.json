@@ -26,6 +26,7 @@
         "Magento_Directory",
         "Magento_Eav",
         "Magento_Indexer",
+        "Magento_MediaGalleryUiApi",
         "Magento_Newsletter",
         "Magento_Payment",
         "Magento_Quote",
@@ -47,8 +48,8 @@
     "components": [],
     "config": [],
     "tests": {
-        "unit": 10,
-        "integration": 0,
+        "unit": 19,
+        "integration": 11,
         "functional": 0
     },
     "module_name": "LokiCheckout_Csp",
