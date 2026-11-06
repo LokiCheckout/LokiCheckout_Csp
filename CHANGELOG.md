@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.14] - 06 November 2026
+### Fixed
+- Require Magento_Csp
+- Drop crossorigin attribute from Alpine CSP script
+- Enforce checkout CSP on Magento 2.4.6 and resolve enabled flag on every read
+
 ## [2.0.13] - 30 October 2026
 ### Fixed
 - Enforce restrictive mode via correct config path
