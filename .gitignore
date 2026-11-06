@@ -20,3 +20,11 @@
 .playwright
 .opencode
 .gitlab-ci-local
+.php-cs-fixer.cache
+.ai/
+.playwright/
+node_modules/
+.opencode/
+.gitlab-ci-local/
+.yireo-extension-builder.json
+MEMORY.md
