@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.15] - 16 November 2026
+### Fixed
+- Add dep with core again
+
 ## [2.0.14] - 06 November 2026
 ### Fixed
 - Require Magento_Csp
