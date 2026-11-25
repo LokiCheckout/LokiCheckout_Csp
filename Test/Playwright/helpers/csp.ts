@@ -25,25 +25,14 @@ export async function setupThemedCheckout(page: Page, context: BrowserContext, c
 }
 
 /**
- * The Luma header renders Knockout UI components (like `scope: 'customer'`), whose bindings and templates are parsed
- * with `new Function` by Knockout and `mage/utils/template.js`. This fails without 'unsafe-eval' and is a documented
- * theme limitation (see README), so only these very errors are ignored
+ * Collect uncaught page errors
  */
-const isLumaKnockoutEvalError = (message: string) => message.includes('Unable to parse bindings')
-    && message.includes(`'unsafe-eval' is not an allowed source of script`);
-
-const isLumaKnockoutEvalViolation = (violation: string) =>
-    /^script-src \| eval \| [^|]*\/(knockoutjs\/knockout\.js|mage\/utils\/template\.js) \|/.test(violation);
-
-/**
- * Collect uncaught page errors, ignoring the known Knockout error of the Luma header
- */
-export function trackPageErrors(page: Page, theme: Theme): () => string[] {
+export function trackPageErrors(page: Page): () => string[] {
     const errors: string[] = [];
     (page as any).setCatchErrors(false);
     page.on('pageerror', error => errors.push(error.message));
 
-    return () => errors.filter(error => theme.theme.startsWith('Hyva/') || !isLumaKnockoutEvalError(error));
+    return () => errors;
 }
 
 /**
@@ -59,9 +48,8 @@ export async function collectCspViolations(page: Page) {
     });
 }
 
-export async function getCspViolations(page: Page, theme: Theme): Promise<string[]> {
-    const violations: string[] = await page.evaluate(() => (window as any).lokiCheckoutCspViolations ?? []);
-    return violations.filter(violation => theme.theme.startsWith('Hyva/') || !isLumaKnockoutEvalViolation(violation));
+export async function getCspViolations(page: Page): Promise<string[]> {
+    return page.evaluate(() => (window as any).lokiCheckoutCspViolations ?? []);
 }
 
 /**

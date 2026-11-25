@@ -14,7 +14,7 @@ import {
 test.describe('LokiCheckout_Csp test', () => {
     for (const theme of themes) {
         test(`should enforce a restrictive script-src on the checkout (${theme.name})`, async ({page, context}) => {
-            const getPageErrors = trackPageErrors(page, theme);
+            const getPageErrors = trackPageErrors(page);
             await setupThemedCheckout(page, context, config, theme);
             const response = await openPage(page, '/checkout/');
 
@@ -31,7 +31,7 @@ test.describe('LokiCheckout_Csp test', () => {
         });
 
         test(`should keep CSP report-only outside the checkout (${theme.name})`, async ({page, context}) => {
-            const getPageErrors = trackPageErrors(page, theme);
+            const getPageErrors = trackPageErrors(page);
             await setupThemedCheckout(page, context, config, theme);
             const response = await openPage(page, '/checkout/cart/');
 
@@ -42,7 +42,7 @@ test.describe('LokiCheckout_Csp test', () => {
         });
 
         test(`should load Alpine without CSP violations (${theme.name})`, async ({page, context}) => {
-            const getPageErrors = trackPageErrors(page, theme);
+            const getPageErrors = trackPageErrors(page);
             await collectCspViolations(page);
             await setupThemedCheckout(page, context, config, theme);
             await openPage(page, '/checkout/');
@@ -57,19 +57,19 @@ test.describe('LokiCheckout_Csp test', () => {
                 expect(await alpineCspScripts.getAttribute('crossorigin'), 'crossorigin attribute').toBeNull();
             }
 
-            expect(await getCspViolations(page, theme), 'CSP violations').toEqual([]);
+            expect(await getCspViolations(page), 'CSP violations').toEqual([]);
 
             expect(getPageErrors(), 'Uncaught page errors').toEqual([]);
         });
 
         test(`should place an order without CSP violations (${theme.name})`, async ({page, context}) => {
-            const getPageErrors = trackPageErrors(page, theme);
+            const getPageErrors = trackPageErrors(page);
             await collectCspViolations(page);
             await setupThemedCheckout(page, context, config, theme);
 
             await new ShippingMethod(page, 'flatrate_flatrate').select();
             await new PaymentMethod(page, 'checkmo').select();
-            expect(await getCspViolations(page, theme), 'CSP violations on the checkout').toEqual([]);
+            expect(await getCspViolations(page), 'CSP violations on the checkout').toEqual([]);
 
             await new PlaceOrderButton(page).click();
             await new SuccessPage(page).expectToBeLoaded();
