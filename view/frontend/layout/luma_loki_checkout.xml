@@ -3,6 +3,14 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="loki.alpinejs" template="LokiCheckout_Csp::alpine-csp.phtml"/>
+
+        <!-- Knockout bindings are parsed with eval, which is blocked by the restrictive CSP -->
+        <referenceBlock name="header" remove="true"/>
+        <referenceBlock name="customer" remove="true"/>
+        <referenceBlock name="catalog.compare.link" remove="true"/>
+        <referenceContainer name="compare-link-wrapper" remove="true"/>
+        <referenceBlock name="messages" remove="true"/>
+        <referenceBlock name="frontend-storage-manager" remove="true"/>
+        <referenceBlock name="customer.data.invalidation.rules" remove="true"/>
     </body>
 </page>
-

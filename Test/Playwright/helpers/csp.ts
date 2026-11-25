@@ -48,8 +48,16 @@ export async function collectCspViolations(page: Page) {
     });
 }
 
+/**
+ * `mage/utils/template.js` probes for ES6 template support with `Function()` inside a try/catch when loaded. Only this
+ * probe is ignored: Rendering templates fails in `underscore.js` instead
+ */
+const isTemplateSupportProbe = (violation: string) =>
+    /^script-src \| eval \| [^|]*\/mage\/utils\/template\.js \|/.test(violation);
+
 export async function getCspViolations(page: Page): Promise<string[]> {
-    return page.evaluate(() => (window as any).lokiCheckoutCspViolations ?? []);
+    const violations: string[] = await page.evaluate(() => (window as any).lokiCheckoutCspViolations ?? []);
+    return violations.filter(violation => !isTemplateSupportProbe(violation));
 }
 
 /**

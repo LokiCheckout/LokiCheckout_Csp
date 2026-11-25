@@ -1,5 +1,6 @@
 import {PaymentMethod, PlaceOrderButton, ShippingMethod, SuccessPage} from '@loki-checkout/checkout-objects';
 import {test, expect} from '@loki/test';
+import merge from '@loki/util/merge';
 import config, {themes} from './config/config';
 import {
     collectCspViolations,
@@ -77,4 +78,18 @@ test.describe('LokiCheckout_Csp test', () => {
             expect(getPageErrors(), 'Uncaught page errors').toEqual([]);
         });
     }
+
+    test('should load the Luma checkout of a logged-in customer without page errors', async ({page, context}) => {
+        const getPageErrors = trackPageErrors(page);
+        await collectCspViolations(page);
+        const loggedInConfig = merge(config, {customer: {login: true}});
+        await setupThemedCheckout(page, context, loggedInConfig, themes[0]);
+        await openPage(page, '/checkout/');
+
+        await expect(page.locator('.page-header .authorization-link')).toContainText('Sign Out');
+        await expect(page.locator('[data-bind]')).toHaveCount(0);
+
+        expect(await getCspViolations(page), 'CSP violations').toEqual([]);
+        expect(getPageErrors(), 'Uncaught page errors').toEqual([]);
+    });
 });
