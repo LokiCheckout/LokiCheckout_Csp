@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.16] - 26 November 2026
+### Fixed
+- Fix `EvalError: Unable to parse bindings` on every Luma checkout page load, by removing Knockout blocks (like the header greeting) that the restrictive CSP blocks
+
 ## [2.0.15] - 16 November 2026
 ### Fixed
 - Add dep with core again
