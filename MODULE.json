@@ -50,7 +50,7 @@
     "tests": {
         "unit": 19,
         "integration": 11,
-        "functional": 0
+        "functional": 1
     },
     "module_name": "LokiCheckout_Csp",
     "composer_name": "loki-checkout/magento2-csp",
